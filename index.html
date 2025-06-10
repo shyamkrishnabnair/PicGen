@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>PicGen | Imagine new stuff</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo-wrapper">
+                <div class="logo">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h1>PicGen <small>Imagine New Stuff</small></h1>
+            </div>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fa fa-sun"></i>
+            </button>
+        </header>
+        <div class="main-content">
+            <form action="#" class="promtp-form">
+                <div class="form-container">
+                    <textarea name="prompt-ip" id="" class="prompt-input" placeholder="Imagine here....." required></textarea>
+                    <button type="button" class="prompt-btn">
+                        Shuffle Prompt
+                        <i class="fa-solid fa-shuffle"></i>
+                    </button>
+                    <div class="form-actions">
+                        <div class="select-wrapper">
+                            <select class="custom-select" required>
+                                <option value="" selected disabled>Choose Model</option>
+                                <option value="black-forest-labs/FLUX.1-dev">FLUX.1-dev</option>
+                                <option value="black-forest-labs/FLUX.1-schnell">FLUX.1-schnell</option>
+                                <option value="prompthero/openjourney">OpenJourney</option>
+                            </select>
+                        </div>
+                        <div class="select-wrapper">
+                            <select class="custom-select" required>
+                                <option value="" selected disabled >Image Count</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>    
+                            </select>
+                        </div>
+                        <div class="select-wrapper">
+                            <select class="custom-select" required>
+                                <option value="" selected disabled>Aspect Ratio</option>
+                                <option value="1:1">1:1</option>
+                                <option value="16:9">16:9</option>
+                                <option value="4:3">4:3</option>  
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <button type="submit" class="generate-button">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            Imagine
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
