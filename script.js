@@ -5,7 +5,7 @@ const modelSelect = document.getElementById('model-select');
 const countSelect = document.getElementById('count-select');
 const ratioSelect = document.getElementById('ratio-select');
 const gridGallery = document.querySelector('.gallery-grid');
-import { API_KEY } from './config.js'; // Ensure you have a config.js file with your API_KEY
+const API_KEY =`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`;
 
 const getImageDimensions = (aspectRatio) => {
     const [width,height]= aspectRatio.split(':').map(Number);
@@ -24,8 +24,7 @@ const generateImages = async (selectedModel, imageCount, aspectRatio, promptText
     const { width, height } = getImageDimensions(aspectRatio);
     const imagePromises = Array.from({ length: imageCount }, async () => {
          try {
-        const response = await fetch(
-		"https://api.replicate.com/v1/models/black-forest-labs/flux-dev/predictions",
+        const response = await fetch(MODEL_URL,
 		{
 			headers: {
 				Authorization: `Bearer ${API_KEY}`,
