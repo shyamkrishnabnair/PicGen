@@ -55,6 +55,7 @@ Replace this in `script.js`:
 
 ```javascript
 const API_KEY = 'hf_your_actual_token_here';
+```
 🧠 Example Prompts
 "A steampunk spaceship flying through clouds at sunset"
 
