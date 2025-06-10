@@ -5,7 +5,7 @@ const modelSelect = document.getElementById('model-select');
 const countSelect = document.getElementById('count-select');
 const ratioSelect = document.getElementById('ratio-select');
 const gridGallery = document.querySelector('.gallery-grid');
-const API_KEY =``;
+import { API_KEY } from './config.js'; // Ensure you have a config.js file with your API_KEY
 
 const getImageDimensions = (aspectRatio) => {
     const [width,height]= aspectRatio.split(':').map(Number);
