@@ -5,6 +5,7 @@ const modelSelect = document.getElementById('model-select');
 const countSelect = document.getElementById('count-select');
 const ratioSelect = document.getElementById('ratio-select');
 const gridGallery = document.querySelector('.gallery-grid');
+
 const getImageDimensions = (aspectRatio) => {
     const [width,height]= aspectRatio.split(':').map(Number);
     const scaleFactor= 512/Math.sqrt(width*height);
