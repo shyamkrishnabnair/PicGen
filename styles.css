@@ -127,3 +127,30 @@ body {
     transition: 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+.gallery-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
+
+    .download{
+        width: 100%;
+        padding: 10px;
+        background-color: #f55353;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #e44a4a;
+            transform: translateY(-2px);
+            transition: 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    }
+}

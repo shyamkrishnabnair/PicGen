@@ -24,16 +24,16 @@
             </button>
         </header>
         <div class="main-content">
-            <form action="#" class="promtp-form">
+            <form action="#" class="prompt-form">
                 <div class="form-container">
-                    <textarea name="prompt-ip" id="" class="prompt-input" placeholder="Imagine here....." required></textarea>
+                    <textarea name="prompt-ip" id="" class="prompt-input" placeholder="Imagine here....." required autofocus></textarea>
                     <button type="button" class="prompt-btn">
                         Shuffle Prompt
                         <i class="fa-solid fa-shuffle"></i>
                     </button>
                     <div class="form-actions">
                         <div class="select-wrapper">
-                            <select class="custom-select" required>
+                            <select class="custom-select" id="model-select" required>
                                 <option value="" selected disabled>Choose Model</option>
                                 <option value="black-forest-labs/FLUX.1-dev">FLUX.1-dev</option>
                                 <option value="black-forest-labs/FLUX.1-schnell">FLUX.1-schnell</option>
@@ -41,7 +41,7 @@
                             </select>
                         </div>
                         <div class="select-wrapper">
-                            <select class="custom-select" required>
+                            <select class="custom-select" id="count-select" required>
                                 <option value="" selected disabled >Image Count</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -50,7 +50,7 @@
                             </select>
                         </div>
                         <div class="select-wrapper">
-                            <select class="custom-select" required>
+                            <select class="custom-select" id="ratio-select" required>
                                 <option value="" selected disabled>Aspect Ratio</option>
                                 <option value="1:1">1:1</option>
                                 <option value="16:9">16:9</option>
@@ -64,8 +64,49 @@
                             Imagine
                     </button>
                 </div>
+                <div class="gallery-grid">
+                    <!-- <div class="image-card">
+                        <img src="images.jpeg" alt="test">
+                        <div class="overlay">
+                            <button class="download">
+                                <i class="fa-solid fa-download"></i>
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="images.jpeg" alt="test">
+                        <div class="overlay">
+                            <button class="download">
+                                <i class="fa-solid fa-download"></i>
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="images.jpeg" alt="test">
+                        <div class="overlay">
+                            <button class="download">
+                                <i class="fa-solid fa-download"></i>
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="images.jpeg" alt="test">
+                        <div class="overlay">
+                            <button class="download">
+                                <i class="fa-solid fa-download"></i>
+                                Download
+                            </button>
+                        </div>
+                    </div> -->
+                </div>
             </form>
+                
+            </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
