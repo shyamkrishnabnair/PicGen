@@ -5,7 +5,7 @@ const modelSelect = document.getElementById('model-select');
 const countSelect = document.getElementById('count-select');
 const ratioSelect = document.getElementById('ratio-select');
 const gridGallery = document.querySelector('.gallery-grid');
-const API_KEY =`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`;
+const API_KEY =``;
 
 const getImageDimensions = (aspectRatio) => {
     const [width,height]= aspectRatio.split(':').map(Number);
@@ -19,39 +19,52 @@ const getImageDimensions = (aspectRatio) => {
     return { width: calculatedWidth, height: calculatedHeight };
 };
 
+const updateImageCard = (index, imageUrl) => {
+    const imgCard= document.getElementById(`image-card-${index}`);
+    if(!imgCard) return;
+    imgCard.innerHTML =`<img src="${imageUrl}" alt="test">
+                        <div class="overlay">
+                            <a href="${imageUrl}" class="download" download="image-${index}.png">
+                                <i class="fa-solid fa-download"></i>
+                                Download
+                            </a>
+                        </div>`
+};
 const generateImages = async (selectedModel, imageCount, aspectRatio, promptText) => {
-    const MODEL_URL= `https://api-inference.huggingface.co/models/${selectedModel}`;
+    const MODEL_URL = `https://api-inference.huggingface.co/models/${selectedModel}`;
     const { width, height } = getImageDimensions(aspectRatio);
-    const imagePromises = Array.from({ length: imageCount }, async () => {
-         try {
-        const response = await fetch(MODEL_URL,
-		{
-			headers: {
-				Authorization: `Bearer ${API_KEY}`,
-				"Content-Type": "application/json",
-                "x-use-cache": "false",
-			},
-			method: "POST",
-			body: JSON.stringify(
-                {
-                    inputs:promptText,
-                    parameters: {width,height},
 
+    const imagePromises = [...Array(imageCount)].map(async (_, i) => {
+        try {
+            const response = await fetch(MODEL_URL, {
+                headers: {
+                    Authorization: `Bearer ${API_KEY}`,
+                    "Content-Type": "application/json",
+                    "x-use-cache": "false",
+                },
+                method: "POST",
+                body: JSON.stringify({
+                    inputs: promptText,
+                    parameters: { width, height },
                 }),
-		}
-	);
+            });
 
-    if (!response.ok) throw new Error((await response.json())?.error);
+            if (!response.ok) {
+                const errorResponse = await response.json();
+                throw new Error(errorResponse?.error || "Unknown error");
+            }
 
-    const result = await response.blob();
-    console.log("Image generated successfully:", result);
-    } catch (error) {
-        console.error("Error generating images:", error);
-    }
+            const result = await response.blob();
+            console.log("Image generated successfully:", result);
+            updateImageCard(i, URL.createObjectURL(result));
+        } catch (error) {
+            console.error("Error generating images:", error);
+        }
     });
-   
+
     await Promise.all(imagePromises);
 };
+
 const createImageCards = (selectedModel, imageCount, aspectRatio, promptText) => {
     
     gridGallery.innerHTML = ''; // Clear previous images
@@ -102,4 +115,4 @@ promtbtn.addEventListener('click', () => {
     const prompt = examplePrompts[Math.floor(Math.random() * examplePrompts.length)];
     promptInput.value = prompt;
     promptInput.focus();
-})
+});
